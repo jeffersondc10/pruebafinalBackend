@@ -28,7 +28,7 @@ function inicializarSlider(){
 /*
   Función que reproduce el video de fondo al hacer scroll, y deteiene la reproducción al detener el scroll
 */
-function playVideoOnScroll(){
+/*function playVideoOnScroll(){
   var ultimoScroll = 0,
       intervalRewind;
   var video = document.getElementById('vidFondo');
@@ -50,7 +50,7 @@ function playVideoOnScroll(){
 
 inicializarSlider();
 playVideoOnScroll();
-
+*/
 /*
 Mostrar todo
 */
@@ -88,13 +88,14 @@ function seleccionarCiudad(){
 seleccionarCiudad()
 function mostrarFiltroCiudad(datos){
 
-  $.each(datos,function(indice,elemento){
-
-    if (elemento.Ciudad) == $("#selectCiudad").val()){
-      var insertar = "<div class = 'itemMostrado'><img src = './img/home.jpg' alt = 'home' height = '400px'/><div class='card-stacked'><b>Dirección:</b>"+ elemento.Direccion+ elemento.Ciudad+ elemento.Telefono + elemento.Codigo_Postal + elemento.Tipo + elemento.Precio + "<div class = 'card-action'>Ver mas</div></div></div>"
+  for (var i in datos) {
+    if ((datos[i].Ciudad) == $("#selectCiudad").val()){
+      var insertar = "<div class = 'itemMostrado'><img src = './img/home.jpg' alt = 'home' height = '400px'/><div class='card-stacked'><b>Dirección:</b>"+ datos[i].Direccion+ datos[i].Ciudad+ "<div class = 'card-action'>Ver mas</div></div></div>"
       $(".colContenido").append(insertar);
+      console.log("entro al if")
     }
-  })
+    console.log("hola")
+  }
 }
 $("#selectCiudad").change(function(){
   $.ajax({
