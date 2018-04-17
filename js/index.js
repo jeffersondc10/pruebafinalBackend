@@ -28,7 +28,7 @@ function inicializarSlider(){
 /*
   Función que reproduce el video de fondo al hacer scroll, y deteiene la reproducción al detener el scroll
 */
-/*function playVideoOnScroll(){
+function playVideoOnScroll(){
   var ultimoScroll = 0,
       intervalRewind;
   var video = document.getElementById('vidFondo');
@@ -50,74 +50,3 @@ function inicializarSlider(){
 
 inicializarSlider();
 playVideoOnScroll();
-*/
-/*
-Mostrar todo
-*/
-
-function mostrarTodos(datos){
-  $.each(datos, function(indice,elemento){
-    var insertar = "<div class = 'itemMostrado'><img src = './img/home.jpg' alt = 'home' height = '400px'/><div class='card-stacked'><b>Dirección:</b>"+ elemento.Direccion + "<div class = 'card-action'>Ver mas</div></div></div>"
-    $(".colContenido").append(insertar);
-  })
-}
-
-function extraerDatos(){
-  $.ajax({
-    url: "./data-1.json",
-    type: "post",
-    success: function(datos){
-      mostrarTodos(datos)
-    }
-  })
-}
-
-$("#mostrarTodos").click(function(){
-  extraerDatos();
-})
-
-/**************************
-Seleccionar ciudad
-**************************/
-$("#selectCiudad").show();
-function seleccionarCiudad(){
-  var ciudad = "<option value='New York'>New York</option><option value='Orlando'>Orlando</option><option value='Los Angeles'>Los Angeles</option><option value='Houston'>Houston</option><option value='Washington'>Washington</option><option value='Miami'>Miami</option>"
-
-  $("#selectCiudad").append(ciudad);
-}
-seleccionarCiudad()
-function mostrarFiltroCiudad(datos){
-
-  for (var i in datos) {
-    if ((datos[i].Ciudad) == $("#selectCiudad").val()){
-      var insertar = "<div class = 'itemMostrado'><img src = './img/home.jpg' alt = 'home' height = '400px'/><div class='card-stacked'><b>Dirección:</b>"+ datos[i].Direccion+ datos[i].Ciudad+ "<div class = 'card-action'>Ver mas</div></div></div>"
-      $(".colContenido").append(insertar);
-      console.log("entro al if")
-    }
-    console.log("hola")
-  }
-}
-$("#selectCiudad").change(function(){
-  $.ajax({
-    url: "./data-1.json",
-    type: "post",
-    sucess: function(datos){
-      mostrarFiltroCiudad(datos)
-    }
-  })
-})
-
-
-/*function filtroCiudad(datos){
-
-  selectCiudad = $("#selectCiudad").val();
-  if (selectCiudad != 0) {
-    switch (selectCiudad) {
-      case 1:
-
-        break;
-      default:
-
-    }
-  }
-}*/

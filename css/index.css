@@ -137,6 +137,7 @@ video#vidFondo {
   flex-flow: row wrap;
 }
 .itemMostrado img{
+  height: 300px;
   width: 35% !important;
 
 }
